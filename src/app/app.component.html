@@ -3,26 +3,28 @@
   <div class="collapse bg-dark" id="navbarHeader">
     <div class="container">
       <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">About</h4>
-          <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+        <div class="col-sm-12 col-md-12 py-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <p class="card-text">Seleccionemos los archivos que se cargaran.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="input-group mb-3">
+                  <input accept=".xml" type="file" class="form-control" id="inputGroupFile02" (change)="selectFile($event)" multiple>
+                  <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04" (click)="ConvertirArchivo(1)">Convertir</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-sm-4 offset-md-1 py-4">
-          <h4 class="text-white">Contact</h4>
-          <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Follow on Twitter</a></li>
-            <li><a href="#" class="text-white">Like on Facebook</a></li>
-            <li><a href="#" class="text-white">Email me</a></li>
-          </ul>
-        </div>
+        
       </div>
     </div>
   </div>
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container">
       <a href="#" class="navbar-brand d-flex align-items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        <strong>Album</strong>
+        <img src="../assets/documents.svg" alt="">
+        <strong class="left-space">SRFE</strong>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -32,169 +34,200 @@
 </header>
 
 <main>
-
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Sistema Reportes Factura Electronica</h1>
-       
+  <div *ngIf="menu==0">
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Sistema Reportes Factura Electrónica</h1>
+         
+        </div>
+      </div>
+    </section>
+    <div class="album  bg-light">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-4">
+            <div class="card" style="width: 18rem;">
+              <button type="button" (click)="direccionar(1)" class="btn btn-outline-secondary"><img src="../assets/recibo.svg" class="card-img-top" alt="..."></button>
+              <div class="card-body">
+                <p class="card-text text-center">Faturas Electrónicas</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card" style="width: 18rem;">
+              <button type="button" (click)="direccionar(2)" class="btn btn-outline-secondary"><img src="../assets/dinero.svg" class="card-img-top" alt="..."></button>
+              <div class="card-body">
+                <p class="card-text text-center">Notas de Debitos</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card" style="width: 18rem;">
+              <button type="button" (click)="direccionar(3)" class="btn btn-outline-secondary"><img src="../assets/documents.svg" class="card-img-top" alt="..."></button>
+              <div class="card-body">
+                <p class="card-text text-center">Notas de Creditos</p>
+              </div>
+            </div>
+          </div>
+          <br>
+        </div>
       </div>
     </div>
-  </section>
-
-  <div class="album  bg-light">
-    <div class="container">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
-          <div class="card shadow-sm">
+  </div>
+  <div *ngIf="menu==1">
+    <div class="card lateral-spaces">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-xl-4 col-md-6 col-xs-12">
+            <h1>Faturas Electrónicas</h1>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-4 col-md-4 col-xs-0 "></div>
+            <div class="col-xl-4 col-md-4 col-xs-0"></div>
+            <div class="col-xl-4 col-md-4 col-xs-12">
+              <div class="search-hero">
+                <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching for a hero by id or name or country">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="container">
+          <div class="row">
            
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="input-group mb-3">
-                  <input accept=".xml" type="file" class="form-control" id="inputGroupFile02" (change)="selectFile($event)">
-                  <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04" (click)="ConvertirArchivo(1)">Convertir</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-           
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-           
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-           
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-           
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-           
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-           
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Id</th>
+                <th>Hero Name</th>
+                <th>Country</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let hero of heroes | filter:searchText">
+                <td>{{hero.id}}</td>
+                <td>{{hero.name}}</td>
+                <td>{{hero.country}}</td>
+              </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
   </div>
-
+  <div *ngIf="menu==2">
+    <div class="card lateral-spaces">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-xl-4 col-md-6 col-xs-12">
+            <h1>Faturas Electrónicas</h1>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-4 col-md-4 col-xs-0 "></div>
+            <div class="col-xl-4 col-md-4 col-xs-0"></div>
+            <div class="col-xl-4 col-md-4 col-xs-12">
+              <div class="search-hero">
+                <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching for a hero by id or name or country">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="container">
+          <div class="row">
+           
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Nombre del Emisor</th>
+                <th>Cédula del Emisor</th>
+                <th>Tipo de Documento</th>
+                <th>Tipo de Factura</th>
+                <th>Consecutivo</th>
+                <th>Porcentaje de Impuesto</th>
+                <th>Monto de Impuesto Hacienda</th>
+                <th>Monto de Descuento</th>
+                <th>Monto Total</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let f of FacturasElectronicas | filter:searchText">
+                <td>{{f.FechaEmision}}</td>
+                <td>{{f.Emisor.Nombre}}</td>
+                <td>{{f.Emisor.Identificacion.Numero}}</td>
+                <td>{{f.Clave}}</td>
+                <td>{{f.MedioPago== '01'?'Contado':f.MedioPago== '02'?'Crédito':f.MedioPago== '03'?'Consignación':f.MedioPago== '04'?'Apartado':f.MedioPago== '05'?'Arrendamiento con Opción a Compra':f.MedioPago== '06'?'Arrendamiento en Función Financiera':f.MedioPago== '07'?'Cobro a Favor de un Tercero':f.MedioPago== '08'?'Servicio Prestado al Estado a Crédito':f.MedioPago== '09'?'Pago de Servicios Prestados al Estado':f.MedioPago== '99'?'Otros':'NA'}}</td>
+                <td>{{f.NumeroConsecutivo}}</td>
+                <td>{{f.id}}</td>
+                <td>{{f.ImpuestoNeto}}</td>
+                <td>{{f.Descuento.MontoDescuento}}</td>
+                <td>{{f.country}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="menu==3">
+    <div class="card lateral-spaces">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-xl-4 col-md-6 col-xs-12">
+            <h1>Faturas Electrónicas</h1>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-4 col-md-4 col-xs-0 "></div>
+            <div class="col-xl-4 col-md-4 col-xs-0"></div>
+            <div class="col-xl-4 col-md-4 col-xs-12">
+              <div class="search-hero">
+                <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching for a hero by id or name or country">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="container">
+          <div class="row">
+           
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Id</th>
+                <th>Hero Name</th>
+                <th>Country</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let hero of heroes | filter:searchText">
+                <td>{{hero.id}}</td>
+                <td>{{hero.name}}</td>
+                <td>{{hero.country}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
 </main>
 
-<footer class="text-muted py-5">
-  <div class="container">
-    <p class="float-end mb-1">
-      <a href="#">Back to top</a>
-    </p>
-    <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-    <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="/docs/5.0/getting-started/introduction/">getting started guide</a>.</p>
-  </div>
+<footer class="mt-auto text-white-50 bg-dark shadow-sm">
+  <p>Creador: William Montoya Arguedas(2021).</p>
 </footer>
-<router-outlet></router-outlet>
+
